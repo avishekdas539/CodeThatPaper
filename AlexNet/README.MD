@@ -19,7 +19,7 @@ This is a normalization technique introduced in the base paper. The formula for 
 $$b_{x,y}^j = \frac {a_{x,y}^j} {k + \alpha \sum_{j=max(0,i-n/2)}^{min(N-1, i+n/2)} (a_{x,y}^j)^2 }$$
 
 Denoting by $a^i_{x,y}$ the activity of a neuron computed by applying kernel i at position $(x, y)$ and then applying the ReLU nonlinearity, the response-normalized activity is $b^i_{x,y}$. where the sum runs over $n$ “adjacent” kernel maps at the same spatial position, and $N$ is the total number of kernels in the layer.  The constants $k, n, \alpha$, and $\beta$ are hyper-parameters whose
-values are determined using a validation set; we used $k = 2, n = 5, α = 10^{-4}, $ and $ β = 0.75$.
+values are determined using a validation set; we used $ k = 2, n = 5, α = 10^{-4}, $ and $ β = 0.75 $.
 
 2. **Own Augmentation Pipeline:** the augmentation pipeline is implemented with a different approach. Check ```augmentation_model``` in code for more details.
 
