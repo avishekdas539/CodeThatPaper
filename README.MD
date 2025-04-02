@@ -6,6 +6,7 @@ This repo is in initial stage of different paper replicas and ML/ AI modules imp
 ----------------------------------------------------------------
 ## List of Contents
 1. [**FullyConnectedNetwork** - Linear/ Dense Layer from scratch only ```NumPy```](/FullyConnectedNetwork)
+2. [**AlexNet from Scratch using** ```tensorflow```](/AlexNet)
 
 ----------------------------------------------------------------
 Do follow and give it a ⭐. For any queries contact [avishekdas539@gmail.com](mailto:avishekdas539@gmail.com) or connect over LinkedIn [avi539🔗](https://www.linkedin.com/in/avi539/)
