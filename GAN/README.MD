@@ -52,7 +52,13 @@ This adversarial process helps the generator learn to create realistic images.
 
 ## 📷 Example Generated Images Grid
 
+### 1. GAN-Tensorflow with Mode Collapse
+
 ![Test](/GAN/imgs/GAN-Loop.gif)
+
+### 2. GAN-Pytorch with `LeakyRelu` and `BatchNorm`
+
+![Test](/GAN/imgs/GAN-Pytorch.gif)
 
 ---
 
