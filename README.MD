@@ -9,5 +9,6 @@ This repo is in initial stage of different paper replicas and ML/ AI modules imp
 2. [**AlexNet from Scratch using** ```tensorflow```](/AlexNet)
 3. [**Generative Adversarial Network** from scratch using ```tensorflow```](/GAN)
 4. [**DCGAN** from scratch using ```PyTorch```](/DCGAN)
+5. [**CGAN** from scratch using ```PyTorch```](/Conditional-DCGAN)
 ----------------------------------------------------------------
 Do follow and give it a ⭐. For any queries contact [avishekdas539@gmail.com](mailto:avishekdas539@gmail.com) or connect over LinkedIn [avi539🔗](https://www.linkedin.com/in/avi539/)
