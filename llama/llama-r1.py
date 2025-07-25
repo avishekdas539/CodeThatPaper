@@ -8,6 +8,7 @@ from dataclasses import dataclass
 import math
 import matplotlib.pyplot as plt
 import tiktoken
+import streamlit as st
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -261,7 +262,17 @@ class Llama(nn.Module):
         state = self.mlp(state)
         state = self.proj_head(state)
         return state
-    def generate(self, x : torch.Tensor, max_token : int = 1024):
+    
+    def apply_rep_penalty(self, logits : torch.Tensor, gen_tokens : torch.Tensor, penalty : float):
+        """logits => 1, D and gen_tokens 1, T"""
+        for token_id in gen_tokens[0].tolist():
+            if logits[0][token_id]>0:
+                logits[0][token_id] /= penalty
+            else:
+                logits[0][token_id] *= penalty
+        return logits
+    
+    def generate(self, x : torch.Tensor, max_token : int = 1024, temp = 0.7, rep_penalty : float = 1.5):
         """x is of shape B, T"""
         for _ in range(max_token):
             x = x[:, -self.config.max_seq_len:]
@@ -275,8 +286,13 @@ class Llama(nn.Module):
             last_step_pred = state[:, -1, :] # B, 1, Vocab_size
             last_step_pred = self.mlp(last_step_pred)
             last_step_pred = self.proj_head(last_step_pred)
-            probs = F.softmax(last_step_pred, dim=-1)
-            idx_next = torch.multinomial(probs, num_samples=1)
+            if temp==0:
+                idx_next = torch.argmax(last_step_pred, dim=-1, keepdim=True)
+            else:
+                probs = F.softmax(last_step_pred/temp, dim=-1)
+                if rep_penalty>0:
+                    probs = self.apply_rep_penalty(probs, x, penalty=rep_penalty)
+                idx_next = torch.multinomial(probs, num_samples=1)
             x = torch.cat((x, idx_next), dim=1) # (B, T+1)
             yield idx_next
 
@@ -284,18 +300,21 @@ llama_model = Llama(config = ModelArgs).to(device)
 print(f"Model size: {count_params(llama_model)/10**6}M parameters")
 
 
-def answer(llama_model, question, max_token=1280, end = '|'):
-    f_text = f"<|im_start|>user\n{question}<|im_end|>\n<|im_start|>reason\n"
+def answer(llama_model, question, max_token=1280, temp = 0.7, rep_penalty = 1.5,  end = '|'):
+    f_text = f"<|im_start|>user\n{question}<|im_end|>\n<|im_start|>reasoning"
     tokens = encode(f_text)
-    print(f_text)
+    print(f_text, end='')
     llama_model.eval()
-    for idx in llama_model.generate(torch.tensor([tokens], dtype=torch.long, device=device), max_token=1280):
-        print(decode(idx[0].tolist()), end=end)
+    for idx in llama_model.generate(torch.tensor([tokens], dtype=torch.long, device=device), max_token=1280, temp = temp, rep_penalty=rep_penalty):
+        token = decode(idx[0].tolist())
+        if token == '<|endoftext|>':
+            break
+        print(token, end=end)
 
-state_dict = torch.load('model_10_v2.pth', map_location=torch.device(device)) # Load to CPU
-llama_model_ = Llama(config = ModelArgs) #.to(device)
+state_dict = torch.load('model_15.pth', map_location=torch.device(device)) # Load to CPU
+llama_model_ = Llama(config = ModelArgs).to(device)
 print(llama_model_.load_state_dict(state_dict))
 
 x = input('Ask question: ')
 while x!='exit':
-    answer(llama_model_, x, end='')
+    answer(llama_model_, x, end='', temp=0.5, rep_penalty=1.1)
