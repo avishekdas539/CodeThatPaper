@@ -14,5 +14,6 @@ This repo is in initial stage of different paper replicas and ML/ AI modules imp
 7. [**GPT** from Scratch using ```PyTorch```](/GPT/)
 8. [**llama small edition** from Scratch using ```PyTorch```](/llama/)
 9. [**Vision Transformer**](/ViT/)
+10. [**TurboQuant - A ```NumPy``` Implementation**](/TurboQuant/)
 ----------------------------------------------------------------
 Do follow and give it a ⭐. For any queries contact [avishekdas539@gmail.com](mailto:avishekdas539@gmail.com) or connect over LinkedIn [avi539🔗](https://www.linkedin.com/in/avi539/)
