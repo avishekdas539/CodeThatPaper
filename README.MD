@@ -1,19 +1,30 @@
-# CodeThatPaper ~
-**A repo of paper replicas and implementation of AI concepts from Scratch** 
+# CodeThatPaper: Research Paper Reproductions & Architecture Implementations
 
-This repo is in initial stage of different paper replicas and ML/ AI modules implemented form scratch with explained equations with codes.
+This repository contains bare-metal implementations and reproductions of foundational Artificial Intelligence research papers. The goal of this project is to deconstruct state-of-the-art architectures from theoretical equations into highly optimized, modular code across PyTorch, TensorFlow, and NumPy. 
 
-----------------------------------------------------------------
-## List of Contents
-1. [**FullyConnectedNetwork** - Linear/ Dense Layer from scratch only ```NumPy```](/FullyConnectedNetwork)
-2. [**AlexNet from Scratch using** ```tensorflow```](/AlexNet)
-3. [**Generative Adversarial Network** from scratch using ```tensorflow```](/GAN)
-4. [**DCGAN** from scratch using ```PyTorch```](/DCGAN)
-5. [**CGAN** from scratch using ```PyTorch```](/Conditional-DCGAN)
-6. [**Attention is All You Need** from scratch using ```PyTorch```](/Attention-is-all-you-need-Transformer/)
-7. [**GPT** from Scratch using ```PyTorch```](/GPT/)
-8. [**llama small edition** from Scratch using ```PyTorch```](/llama/)
-9. [**Vision Transformer**](/ViT/)
-10. [**TurboQuant - A ```NumPy``` Implementation**](/TurboQuant/)
-----------------------------------------------------------------
-Do follow and give it a ⭐. For any queries contact [avishekdas539@gmail.com](mailto:avishekdas539@gmail.com) or connect over LinkedIn [avi539🔗](https://www.linkedin.com/in/avi539/)
+Detailed reproduction metrics, original paper comparisons, and execution scripts are located in the respective sub-directories.
+
+## 📌 Architecture Directory
+
+### 👁️ Vision & Multi-Modal Models
+These implementations focus on attention mechanisms and feature extraction in computer vision, aligning with cross-domain adaptation tasks.
+* [**Vision Transformer (ViT)**](/ViT/) - *An Image is Worth 16x16 Words* 
+* [**AlexNet**](/AlexNet) - *Deep Convolutional Neural Networks* (TensorFlow)
+
+### 🧠 Large Language Models & Attention Mechanisms
+From the foundational Transformer to modern causal language models.
+* [**Attention is All You Need**](/Attention-is-all-you-need-Transformer/) - Core Transformer architecture from scratch (PyTorch)
+* [**LLaMA (Small Edition)**](/llama/) - Reproduction of the LLaMA architecture (PyTorch)
+* [**GPT**](/GPT/) - Generative Pre-trained Transformer from scratch (PyTorch)
+
+### 🎨 Generative Adversarial Networks
+* [**Conditional DCGAN (CGAN)**](/Conditional-DCGAN) - (PyTorch)
+* [**Deep Convolutional GAN (DCGAN)**](/DCGAN) - (PyTorch)
+* [**Standard GAN**](/GAN) - (TensorFlow)
+
+### ⚙️ Core Operations & Fundamentals
+* [**TurboQuant**](/TurboQuant/) - Low-level quantization implementation (NumPy)
+* [**Fully Connected Network**](/FullyConnectedNetwork) - Dense layer math from scratch (NumPy)
+
+---
+*Connect for research discussions or view my enterprise AI experience on [LinkedIn](https://www.linkedin.com/in/avi539/).*
